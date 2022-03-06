@@ -128,7 +128,7 @@ begin
                 if (d_rd = '1') and (dcsel = MY_CHIPSELECT) then --VER
                     if daddress(15 downto 0) = MY_WORD_ADDRESS then -- core reading DIG_FILT_CTRL
                         ddata_r <= data_ena;
-                    elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 6 then -- core reading DIG_FILT_IN
+                    elsif daddress(15 downto 0) = MY_WORD_ADDRESS then -- core reading DIG_FILT_IN
                         ddata_r <= std_logic_vector(data_out);
                     --elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 2 then -- core reading DIG_FILT_OUT
                     end if;
