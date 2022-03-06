@@ -36,11 +36,17 @@ architecture RTL of fir_filt is
 
     type registers is array (N_coefficients - 2 downto 0) of signed(N_bits_registers - 1 downto 0); -- registradores é um array de 3 bits de 4 registradores(1 bit de sinalizaçao).
 
-    type coefficients is array (N_coefficients - 1 downto 0) of signed(N_bits_registers - 1 downto 0); --coeficientes é um array de 4 bits de 4 registradores.
+    -- type coefficients is array (N_coefficients - 1 downto 0) of signed(N_bits_registers - 1 downto 0); --coeficientes é um array de 4 bits de 4 registradores.
+
+    -- Build a 2-D array type for the RAM
+    subtype word_t is std_logic_vector(31 downto 0);
+    type memory_t is array (0 to 3) of word_t;
 
     signal reg : registers;
 
-    signal coef : coefficients;
+    --signal coef : coefficients;
+
+    signal coef : memory_t;
 
     signal data_ena : std_logic_vector(31 downto 0);
 
@@ -50,24 +56,6 @@ architecture RTL of fir_filt is
     --signal data_out : signed(N_bits_registers - 1 downto 0);
 
 begin
-
-    escrita_de_barramento : process(clk, rst)
-    begin
-        if rst = '1' then
-            ddata_r <= (others => '0'); -- Zera a leitura dos dados
-        else
-            if rising_edge(clk) then
-                if (d_rd = '1') and (dcsel = MY_CHIPSELECT) then --VER
-                    if daddress(15 downto 0) = MY_WORD_ADDRESS then -- core reading DIG_FILT_CTRL
-                        ddata_r <= data_ena;
-                    elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 4 then -- core reading DIG_FILT_IN
-                        ddata_r <= std_logic_vector(data_out);
-                    elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 2 then -- core reading DIG_FILT_OUT
-                    end if;
-                end if;
-            end if;
-        end if;
-    end process;
 
     -- Process give input value -- processo leitura barramento Barramento
     leitura_de_barramento : process(clk, rst)
@@ -80,22 +68,31 @@ begin
             if rising_edge(clk) then
                 if (d_we = '1') and (dcsel = MY_CHIPSELECT) then
                     if daddress(15 downto 0) = (MY_WORD_ADDRESS) then
-                        data_ena <= ddata_w;
+                        --data_ena <= ddata_w;
+                        coef(0) <= ddata_w;
                     elsif daddress(15 downto 0) = (MY_WORD_ADDRESS) + 1 then -- O MY WORD É A ORDEM DOS DADOS NA STRUCT.
-                        data_reset <= ddata_w;
+                        --data_reset <= ddata_w;
+                        coef(1) <= ddata_w;
                     elsif daddress(15 downto 0) = (MY_WORD_ADDRESS) + 2 then -- RECEBENDO OS COEFICIENTES
-                        coef(0) <= signed(ddata_w);
+                        --coef(0) <= signed(ddata_w);
+                        --coef(0) <= ddata_w;
+                        coef(2) <= ddata_w;
                     elsif daddress(15 downto 0) = (MY_WORD_ADDRESS) + 3 then
-                        coef(1) <= signed(ddata_w);
-                    elsif daddress(15 downto 0) = (MY_WORD_ADDRESS) + 4 then
-                        coef(2) <= signed(ddata_w);
-                    elsif daddress(15 downto 0) = (MY_WORD_ADDRESS) + 5 then
-                        coef(3) <= signed(ddata_w);
+                        --coef(1) <= signed(ddata_w);
+                        --coef(1) <= ddata_w;
+                        coef(3) <= ddata_w;
+                  --  elsif daddress(15 downto 0) = (MY_WORD_ADDRESS) + 4 then
+                        --coef(2) <= signed(ddata_w);
+                    --    coef(2) <= ddata_w;
+                   -- elsif daddress(15 downto 0) = (MY_WORD_ADDRESS) + 5 then
+                        --coef(3) <= signed(ddata_w);
+                        coef(3) <= ddata_w;
                     end if;
                 end if;
             end if;
         end if;
     end process;
+    
     FIR_filter : process(clk, rst)
         variable sum, prod : signed(2 * N_bits_registers - 1 downto 0) := (others => '0'); -- produto e somador tem um tamanho de 8 posiçoes.
         variable sign      : std_logic; -- Tratamento de overflow
@@ -107,10 +104,11 @@ begin
                 end loop;
             end loop;
         elsif rising_edge(clk) then
-            sum := coef(0) * signed(data_in);    -- Primeiro coeficiente -> primeiro parâmetro do somador.
+            -- sum := coef(0) * signed(data_in);    -- Primeiro coeficiente -> primeiro parâmetro do somador.
+            sum := signed(coef(0)) * signed(data_in);
             for i in 1 to N_coefficients - 1 loop
                 sign := sum(2 * N_bits_registers - 1); --Sign recebe a ultima posição da soma.
-                prod := coef(i) * reg(N_coefficients - 1 - i); -- coef(1) * reg(2)  // coef(2) * reg(1)  // coef(3) *
+                prod := signed(coef(i)) * reg(N_coefficients - 1 - i); -- coef(1) * reg(2)  // coef(2) * reg(1)  // coef(3) *
                 sum  := sum + prod;
                 if (sign = prod(prod'left)) AND (sum(sum'left) /= sign) then
                     sum := (sum'left => sign, others => not sign);
@@ -120,5 +118,24 @@ begin
         end if;
         data_out <= sum;
     end process;
+    
+    escrita_de_barramento : process(clk, rst)
+    begin
+        if rst = '1' then
+            ddata_r <= (others => '0'); -- Zera a leitura dos dados
+        else
+            if rising_edge(clk) then
+                if (d_rd = '1') and (dcsel = MY_CHIPSELECT) then --VER
+                    if daddress(15 downto 0) = MY_WORD_ADDRESS then -- core reading DIG_FILT_CTRL
+                        ddata_r <= data_ena;
+                    elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 6 then -- core reading DIG_FILT_IN
+                        ddata_r <= std_logic_vector(data_out);
+                    --elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 2 then -- core reading DIG_FILT_OUT
+                    end if;
+                end if;
+            end if;
+        end if;
+    end process;
+    
 
 end architecture RTL;

@@ -54,7 +54,8 @@ architecture RTL of coretestbench is
     signal ddata_w     : std_logic_vector(31 downto 0);
     signal dmask       : std_logic_vector(3 downto 0);
     signal dcsel       : std_logic_vector(1 downto 0);
-    signal d_we        : std_logic := '0';
+    --signal d_we        : std_logic := '0';
+    signal d_we        : std_logic := '1';
     signal ddata_r_mem : std_logic_vector(31 downto 0);
     signal d_rd        : std_logic;
     signal d_sig       : std_logic;
@@ -235,7 +236,8 @@ begin
             ddata_r_i2c      => ddata_r_i2c,
             ddata_r_timer    => ddata_r_timer,
             ddata_r_dif_fil  => ddata_r_dig_fil,
-            ddata_r_periph   => ddata_r_periph
+            ddata_r_periph   => ddata_r_periph,
+            ddata_r_fir_fil => ddata_r_fir_fil
         );
 
     -- Softcore instatiation
@@ -338,7 +340,7 @@ begin
             data_in  => data_in_dig_fil
         );
 
-    fir_filter : entity work.fir_filt
+    fir_filt : entity work.fir_filt
 
         port map(
             clk      => clk,

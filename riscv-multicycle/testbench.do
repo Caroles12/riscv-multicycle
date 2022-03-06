@@ -16,31 +16,29 @@
 #******************************************************************************
 
 vlib work
-vcom ../../memory/iram_quartus.vhd
-vcom ../../memory/dmemory.vhd
-vcom ../../memory/instructionbusmux.vhd
-vcom ../../memory/databusmux.vhd
-vcom ../../memory/iodatabusmux.vhd
-vcom ../../alu/alu_types.vhd
-vcom ../../alu/alu.vhd
-vcom ../../alu/m/division_functions.vhd
-vcom ../../alu/m/quick_naive.vhd
-vcom ../../alu/m/M_types.vhd
-vcom ../../alu/m/M.vhd
-vcom ../../decoder/decoder_types.vhd
-vcom ../../decoder/iregister.vhd
-vcom ../../decoder/decoder.vhd
-vcom ../../registers/register_file.vhd
-vcom ../../peripherals/gpio/gpio.vhd
-vcom ../../peripherals/gpio/led_displays.vhd
-vcom ../../peripherals/timer/Timer.vhd
-vcom ./dig_filt.vhd
-vcom ./fir_filt.vhd
-vcom ../../core/csr.vhd
-vcom ../../core/core.vhd
-vcom ../../core/txt_util.vhdl
-vcom ../../core/trace_debug.vhd
-vcom ./testbench.vhd
+vcom ./memory/iram_quartus.vhd
+vcom ./memory/dmemory.vhd
+vcom ./memory/instructionbusmux.vhd
+vcom ./memory/databusmux.vhd
+vcom ./memory/iodatabusmux.vhd
+vcom ./alu/alu_types.vhd
+vcom ./alu/alu.vhd
+vcom ./alu/m/division_functions.vhd
+vcom ./alu/m/quick_naive.vhd
+vcom ./alu/m/M_types.vhd
+vcom ./alu/m/M.vhd
+vcom ./decoder/decoder_types.vhd
+vcom ./decoder/iregister.vhd
+vcom ./decoder/decoder.vhd
+vcom ./registers/register_file.vhd
+vcom ./peripherals/gpio/gpio.vhd
+vcom ./peripherals/gpio/led_displays.vhd
+vcom ./peripherals/timer/Timer.vhd
+vcom ./core/csr.vhd
+vcom ./core/core.vhd
+vcom ./core/txt_util.vhdl
+vcom ./core/trace_debug.vhd
+vcom testbench.vhd
 
 vsim -t ns work.coretestbench
 
@@ -172,29 +170,6 @@ add wave -height 15 -divider "Input/Output SIM"
 add wave -label LEDR -radix hex /LEDR
 add wave -label HEX0 -radix hex /HEX0
 add wave -label ARDUINO_IO -radix hex /ARDUINO_IO
-
-
-add wave -height 15 -divider "Digital Filter"
-add wave -label data_in  -radix unsigned  /dig_fil/data_in
-add wave -label data_out -radix unsigned  /dig_fil/data_out
-add wave -label data_ena -radix binary /dig_fil/data_ena
-add wave -label data_reset -radix binary /dig_fil/data_reset 
-add wave -label ddata_r  -radix unsigned /dig_fil/ddata_r
-add wave -label d_rd     -radix binary /dig_fil/d_rd
-add wave -label registers -radix unsigned /dig_fil/registers
-add wave -label r_acc -radix unsigned /dig_fil/r_acc
-
-
-add wave -height 15 -divider "FIR FILTER"
-add wave -label data_in  -radix unsigned  /fir_filt/data_in
-add wave -label data_out -radix unsigned  /fir_filt/data_out
-add wave -label data_ena -radix binary /fir_filt/data_ena
-add wave -label data_reset -radix binary /fir_filt/data_reset 
-add wave -label ddata_r  -radix unsigned /fir_filt/ddata_r
-add wave -label d_rd     -radix binary /fir_filt/d_rd
-add wave -label d_we     -radix binary /fir_filt/d_we
-add wave -label registers -radix unsigned /fir_filt/reg
-add wave -label coef -radix unsigned /fir_filt/coef
 
 run 2000 us
 wave zoomfull
