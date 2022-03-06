@@ -1,0 +1,322 @@
+<sld_project_info>
+  <project>
+    <hash md5_digest_80b="ec74cfc83a405bde0ef0"/>
+  </project>
+  <file_info>
+    <file device="10M50DAF484C7G" path="de10_lite.sof" usercode="0xFFFFFFFF"/>
+  </file_info>
+  <hub_info hub_ir_width="8" ir_width="8" node_addr_width="2" node_count="2"/>
+  <node_info>
+    <node hpath="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|altsource_probe:issp_impl" instance_id="0" mfg_id="110" node_id="9" sld_node_info="0x486E00" version="0">
+      <parameters>
+        <parameter name="lpm_type" type="string" value="altsource_probe"/>
+        <parameter name="lpm_hint" type="string" value="UNUSED"/>
+        <parameter name="sld_auto_instance_index" type="string" value="YES"/>
+        <parameter name="sld_instance_index" type="dec" value="0"/>
+        <parameter name="SLD_NODE_INFO" type="dec" value="4746752"/>
+        <parameter name="sld_ir_width" type="dec" value="4"/>
+        <parameter name="instance_id" type="string" value="NONE"/>
+        <parameter name="probe_width" type="dec" value="64"/>
+        <parameter name="source_width" type="dec" value="64"/>
+        <parameter name="source_initial_value" type="string" value="0"/>
+        <parameter name="enable_metastability" type="string" value="NO"/>
+      </parameters>
+      <inputs>
+        <port name="probe[0]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[0]"/>
+        <port name="probe[1]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[1]"/>
+        <port name="probe[2]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[2]"/>
+        <port name="probe[3]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[3]"/>
+        <port name="probe[4]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[4]"/>
+        <port name="probe[5]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[5]"/>
+        <port name="probe[6]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[6]"/>
+        <port name="probe[7]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[7]"/>
+        <port name="probe[8]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[8]"/>
+        <port name="probe[9]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[9]"/>
+        <port name="probe[10]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[10]"/>
+        <port name="probe[11]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[11]"/>
+        <port name="probe[12]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[12]"/>
+        <port name="probe[13]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[13]"/>
+        <port name="probe[14]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[14]"/>
+        <port name="probe[15]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[15]"/>
+        <port name="probe[16]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[16]"/>
+        <port name="probe[17]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[17]"/>
+        <port name="probe[18]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[18]"/>
+        <port name="probe[19]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[19]"/>
+        <port name="probe[20]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[20]"/>
+        <port name="probe[21]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[21]"/>
+        <port name="probe[22]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[22]"/>
+        <port name="probe[23]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[23]"/>
+        <port name="probe[24]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[24]"/>
+        <port name="probe[25]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[25]"/>
+        <port name="probe[26]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[26]"/>
+        <port name="probe[27]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[27]"/>
+        <port name="probe[28]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[28]"/>
+        <port name="probe[29]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[29]"/>
+        <port name="probe[30]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[30]"/>
+        <port name="probe[31]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[31]"/>
+        <port name="probe[32]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[32]"/>
+        <port name="probe[33]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[33]"/>
+        <port name="probe[34]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[34]"/>
+        <port name="probe[35]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[35]"/>
+        <port name="probe[36]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[36]"/>
+        <port name="probe[37]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[37]"/>
+        <port name="probe[38]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[38]"/>
+        <port name="probe[39]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[39]"/>
+        <port name="probe[40]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[40]"/>
+        <port name="probe[41]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[41]"/>
+        <port name="probe[42]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[42]"/>
+        <port name="probe[43]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[43]"/>
+        <port name="probe[44]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[44]"/>
+        <port name="probe[45]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[45]"/>
+        <port name="probe[46]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[46]"/>
+        <port name="probe[47]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[47]"/>
+        <port name="probe[48]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[48]"/>
+        <port name="probe[49]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[49]"/>
+        <port name="probe[50]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[50]"/>
+        <port name="probe[51]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[51]"/>
+        <port name="probe[52]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[52]"/>
+        <port name="probe[53]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[53]"/>
+        <port name="probe[54]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[54]"/>
+        <port name="probe[55]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[55]"/>
+        <port name="probe[56]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[56]"/>
+        <port name="probe[57]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[57]"/>
+        <port name="probe[58]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[58]"/>
+        <port name="probe[59]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[59]"/>
+        <port name="probe[60]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[60]"/>
+        <port name="probe[61]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[61]"/>
+        <port name="probe[62]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[62]"/>
+        <port name="probe[63]" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|probe[63]"/>
+        <port name="source_clk" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|source_clk"/>
+        <port name="source_ena" source="in_system_probe:u0|altsource_probe_top:in_system_sources_probes_0|source_ena"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_raw_tck" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_raw_tck"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_tdi" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_tdi"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_usr1" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_usr1"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_cdr" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_cdr"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_sdr" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_sdr"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_e1dr" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_e1dr"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_udr" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_udr"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_cir" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_cir"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_uir" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_uir"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_tlr" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_jtag_state_tlr"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_clr" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_clr"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ena" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ena"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_in_0_" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_in_0_"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_in_1_" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_in_1_"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_in_2_" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_in_2_"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_in_3_" source="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_in_3_"/>
+      </inputs>
+      <outputs>
+        <port name="source[0]"/>
+        <port name="source[1]"/>
+        <port name="source[2]"/>
+        <port name="source[3]"/>
+        <port name="source[4]"/>
+        <port name="source[5]"/>
+        <port name="source[6]"/>
+        <port name="source[7]"/>
+        <port name="source[8]"/>
+        <port name="source[9]"/>
+        <port name="source[10]"/>
+        <port name="source[11]"/>
+        <port name="source[12]"/>
+        <port name="source[13]"/>
+        <port name="source[14]"/>
+        <port name="source[15]"/>
+        <port name="source[16]"/>
+        <port name="source[17]"/>
+        <port name="source[18]"/>
+        <port name="source[19]"/>
+        <port name="source[20]"/>
+        <port name="source[21]"/>
+        <port name="source[22]"/>
+        <port name="source[23]"/>
+        <port name="source[24]"/>
+        <port name="source[25]"/>
+        <port name="source[26]"/>
+        <port name="source[27]"/>
+        <port name="source[28]"/>
+        <port name="source[29]"/>
+        <port name="source[30]"/>
+        <port name="source[31]"/>
+        <port name="source[32]"/>
+        <port name="source[33]"/>
+        <port name="source[34]"/>
+        <port name="source[35]"/>
+        <port name="source[36]"/>
+        <port name="source[37]"/>
+        <port name="source[38]"/>
+        <port name="source[39]"/>
+        <port name="source[40]"/>
+        <port name="source[41]"/>
+        <port name="source[42]"/>
+        <port name="source[43]"/>
+        <port name="source[44]"/>
+        <port name="source[45]"/>
+        <port name="source[46]"/>
+        <port name="source[47]"/>
+        <port name="source[48]"/>
+        <port name="source[49]"/>
+        <port name="source[50]"/>
+        <port name="source[51]"/>
+        <port name="source[52]"/>
+        <port name="source[53]"/>
+        <port name="source[54]"/>
+        <port name="source[55]"/>
+        <port name="source[56]"/>
+        <port name="source[57]"/>
+        <port name="source[58]"/>
+        <port name="source[59]"/>
+        <port name="source[60]"/>
+        <port name="source[61]"/>
+        <port name="source[62]"/>
+        <port name="source[63]"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_out_0_"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_out_1_"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_out_2_"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_ir_out_3_"/>
+        <port name="jtag.bp.u0_in_system_sources_probes_0_issp_impl_tdo"/>
+      </outputs>
+    </node>
+    <node hpath="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|sld_mod_ram_rom:mgl_prim2" instance_id="0" mfg_id="110" node_id="3" sld_node_info="0x10186E00" version="2">
+      <parameters>
+        <parameter name="SLD_NODE_INFO" type="dec" value="270036480"/>
+        <parameter name="SLD_AUTO_INSTANCE_INDEX" type="string" value="yes"/>
+        <parameter name="SLD_IP_VERSION" type="dec" value="1"/>
+        <parameter name="SLD_IP_MINOR_VERSION" type="dec" value="3"/>
+        <parameter name="SLD_COMMON_IP_VERSION" type="dec" value="0"/>
+        <parameter name="width_word" type="unknown" value="32"/>
+        <parameter name="numwords" type="unknown" value="1024"/>
+        <parameter name="widthad" type="unknown" value="10"/>
+        <parameter name="shift_count_bits" type="unknown" value="6"/>
+        <parameter name="cvalue" type="unknown" value="00000000000000000000000000000000"/>
+        <parameter name="is_data_in_ram" type="unknown" value="1"/>
+        <parameter name="is_readable" type="unknown" value="1"/>
+        <parameter name="BACKPRESSURE_ENABLED" type="dec" value="0"/>
+        <parameter name="FIFO_SIZE" type="dec" value="16"/>
+        <parameter name="FIFO_SIZE_WIDTH" type="dec" value="5"/>
+        <parameter name="node_name" type="unknown" value="822083584"/>
+      </parameters>
+      <inputs>
+        <port name="data_read[0]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[0]"/>
+        <port name="data_read[1]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[1]"/>
+        <port name="data_read[2]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[2]"/>
+        <port name="data_read[3]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[3]"/>
+        <port name="data_read[4]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[4]"/>
+        <port name="data_read[5]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[5]"/>
+        <port name="data_read[6]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[6]"/>
+        <port name="data_read[7]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[7]"/>
+        <port name="data_read[8]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[8]"/>
+        <port name="data_read[9]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[9]"/>
+        <port name="data_read[10]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[10]"/>
+        <port name="data_read[11]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[11]"/>
+        <port name="data_read[12]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[12]"/>
+        <port name="data_read[13]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[13]"/>
+        <port name="data_read[14]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[14]"/>
+        <port name="data_read[15]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[15]"/>
+        <port name="data_read[16]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[16]"/>
+        <port name="data_read[17]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[17]"/>
+        <port name="data_read[18]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[18]"/>
+        <port name="data_read[19]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[19]"/>
+        <port name="data_read[20]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[20]"/>
+        <port name="data_read[21]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[21]"/>
+        <port name="data_read[22]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[22]"/>
+        <port name="data_read[23]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[23]"/>
+        <port name="data_read[24]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[24]"/>
+        <port name="data_read[25]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[25]"/>
+        <port name="data_read[26]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[26]"/>
+        <port name="data_read[27]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[27]"/>
+        <port name="data_read[28]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[28]"/>
+        <port name="data_read[29]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[29]"/>
+        <port name="data_read[30]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[30]"/>
+        <port name="data_read[31]" source="iram_quartus:iram_quartus_inst|altsyncram:altsyncram_component|altsyncram_uqv3:auto_generated|altsyncram_ult2:altsyncram1|q_b[31]"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_raw_tck" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_raw_tck"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_tdi" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_tdi"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_usr1" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_usr1"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_cdr" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_cdr"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_sdr" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_sdr"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_e1dr" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_e1dr"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_udr" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_udr"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_uir" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_jtag_state_uir"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_clr" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_clr"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ena" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ena"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_0_" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_0_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_1_" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_1_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_2_" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_2_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_3_" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_3_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_4_" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_4_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_5_" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_5_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_6_" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_6_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_7_" source="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_in_7_"/>
+      </inputs>
+      <outputs>
+        <port name="tck_usr"/>
+        <port name="address[0]"/>
+        <port name="address[1]"/>
+        <port name="address[2]"/>
+        <port name="address[3]"/>
+        <port name="address[4]"/>
+        <port name="address[5]"/>
+        <port name="address[6]"/>
+        <port name="address[7]"/>
+        <port name="address[8]"/>
+        <port name="address[9]"/>
+        <port name="enable_write"/>
+        <port name="data_write[0]"/>
+        <port name="data_write[1]"/>
+        <port name="data_write[2]"/>
+        <port name="data_write[3]"/>
+        <port name="data_write[4]"/>
+        <port name="data_write[5]"/>
+        <port name="data_write[6]"/>
+        <port name="data_write[7]"/>
+        <port name="data_write[8]"/>
+        <port name="data_write[9]"/>
+        <port name="data_write[10]"/>
+        <port name="data_write[11]"/>
+        <port name="data_write[12]"/>
+        <port name="data_write[13]"/>
+        <port name="data_write[14]"/>
+        <port name="data_write[15]"/>
+        <port name="data_write[16]"/>
+        <port name="data_write[17]"/>
+        <port name="data_write[18]"/>
+        <port name="data_write[19]"/>
+        <port name="data_write[20]"/>
+        <port name="data_write[21]"/>
+        <port name="data_write[22]"/>
+        <port name="data_write[23]"/>
+        <port name="data_write[24]"/>
+        <port name="data_write[25]"/>
+        <port name="data_write[26]"/>
+        <port name="data_write[27]"/>
+        <port name="data_write[28]"/>
+        <port name="data_write[29]"/>
+        <port name="data_write[30]"/>
+        <port name="data_write[31]"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_out_0_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_out_1_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_out_2_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_out_3_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_out_4_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_out_5_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_out_6_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_ir_out_7_"/>
+        <port name="jtag.bp.iram_quartus_inst_altsyncram_component_auto_generated_mgl_prim2_tdo"/>
+      </outputs>
+    </node>
+  </node_info>
+  <sld_infos>
+    <sld_info hpath="in_system_probe:u0" name="u0">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME in_system_probe HAS_SOPCINFO 1 GENERATION_ID 1645560672"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+    <sld_info hpath="sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:instrumentation_fabric" library="alt_sld_fab" name="instrumentation_fabric">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME alt_sld_fab HAS_SOPCINFO 1"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
+</sld_project_info>

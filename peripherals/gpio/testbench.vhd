@@ -73,6 +73,8 @@ architecture RTL of coretestbench is
     signal ddata_r_uart : std_logic_vector(31 downto 0);
     signal ddata_r_adc : std_logic_vector(31 downto 0);
     signal ddata_r_i2c : std_logic_vector(31 downto 0);
+    signal ddata_r_stepmot : std_logic_vector(31 downto 0);
+    signal ddata_r_dif_fil : std_logic_vector(31 downto 0);
     
 begin
 
@@ -183,6 +185,8 @@ begin
         
     io_data_bus_mux: entity work.iodatabusmux
         port map(
+            ddata_r_stepmot => ddata_r_stepmot,
+            ddata_r_dif_fil => ddata_r_dif_fil,
             daddress         => daddress,
             ddata_r_gpio     => ddata_r_gpio,
             ddata_r_segments => ddata_r_segments,

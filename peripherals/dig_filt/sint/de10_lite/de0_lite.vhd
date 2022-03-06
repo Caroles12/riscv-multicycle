@@ -143,6 +143,12 @@ architecture rtl of de0_lite is
 
     signal source : std_logic_vector(64 downto 0);
     signal probe : std_logic_vector(64 downto 0);
+    signal ddata_r_stepmot : std_logic_vector(31 downto 0);
+    
+    
+    
+    signal datain: signed(3 downto 0);
+    signal dataout: signed(3 downto 0);
 	 
 	 
 	 
@@ -254,6 +260,7 @@ begin
     
     io_data_bus_mux: entity work.iodatabusmux
         port map(
+            ddata_r_stepmot => ddata_r_stepmot,
             daddress         => daddress,
             ddata_r_gpio     => ddata_r_gpio,
             ddata_r_segments => ddata_r_segments,
@@ -343,6 +350,19 @@ begin
     LEDR(7 downto 0) <= gpio_output(7 downto 0);
     probe(7 downto 0) <= gpio_output(7 downto 0);
     probe(39 downto 8) <= ddata_r_dig_fil(31 downto 0);    --saida do barramento dig_fil 
+    
+    
+    FIR_filter: entity work.fir_filt
+        generic map(
+            N_coefficients   => 4,
+            N_bits_registers => 4
+        )
+        port map(
+            clk     => clk,
+            rst     => rst,
+            datain  => datain,
+            dataout => dataout
+        );
     
     
 

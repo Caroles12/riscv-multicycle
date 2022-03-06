@@ -4,7 +4,12 @@
 --      Instituto Federal de Santa Catarina
 --
 -- Digital filter
+-- Pegar o exemplo de ROM/RAM e fazer um vetor de memória fixa(datatype)
+-- Nesse vetor, vamos colocar os coeficientes fixos e tentar fazer a mudança deles.
+-- Fazendo funcionar a mudança deles, aí sim tenta trocar por software.
 
+-- DUVIDAS:
+-- fAZE
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -12,11 +17,12 @@ use ieee.numeric_std.all;
 entity dig_filt is
     generic (
         --! Chip selec
-        MY_CHIPSELECT : std_logic_vector(1 downto 0) := "10";
-        MY_WORD_ADDRESS : unsigned(15 downto 0) := x"0080";
-        DADDRESS_BUS_SIZE : integer := 32;
-        G_NBIT                     : integer := 32;
-        G_AVG_LEN_LOG              : integer := 2   --2^2 tamanho filtro
+        MY_CHIPSELECT : std_logic_vector(1 downto 0) := "10"; --2
+        MY_WORD_ADDRESS : unsigned(15 downto 0) := x"0080"; --128
+        DADDRESS_BUS_SIZE : integer := 32;  -- Tamanho
+        G_NBIT                     : integer := 32; -- Número de bits dos registradores.
+        G_AVG_LEN_LOG              : integer := 2 ;  --2^2 tamanho filtro -- Número de amostras do filtro
+       -- TAMANHO_FOR                : integer := 4   --2^2 tamanho filtro -- Número de amostras do filtro
     );
 
     port(
@@ -42,7 +48,21 @@ entity dig_filt is
 end entity dig_filt;
 
 architecture RTL of dig_filt is
-
+    
+    --VETOR CRIADO
+    subtype word_t is std_logic_vector(31 downto 0); -- 7 bits para descrever os coef.
+    type memory_t is array(0 to 4) of word_t; --32 regs para armazenar
+      
+    --INICIALIZANDO O VETOR 
+    signal coef : memory_t := 
+                  (x"0000", x"0001", x"0002", x"0003",x"0004");  -- 0, 1, 2, 3,4
+                  -- others => (others => '0'));  
+                  
+    --signal produto:  
+    type produto is array (0 to 2**G_AVG_LEN_LOG-1) of signed(G_NBIT-1 downto 0);
+    signal produtofinal :produto;   
+        
+        
     type reg_array is array (0 to 2**G_AVG_LEN_LOG-1) of signed(G_NBIT-1 downto 0);
     signal registers                        : reg_array;
     signal r_acc                            : signed(G_NBIT+G_AVG_LEN_LOG-1 downto 0);  -- average accumulator
@@ -55,13 +75,15 @@ begin
 
 
     -- Process give output value -- processo escritura barramento Barramento
-    process(clk, rst)
+    -- Basicamente, ve aonde está na memória e decide se está habilitado para escrita
+    -- ou dependendo do local da memória, está habilitado para receber a saída.
+    dig_filter: process(clk, rst)
     begin
         if rst = '1' then
-            ddata_r <= (others => '0');
+            ddata_r <= (others => '0'); -- Zera a leitura dos dados
         else
             if rising_edge(clk) then
-                if (d_rd = '1') and (dcsel = MY_CHIPSELECT) then
+                if (d_rd = '1') and (dcsel = MY_CHIPSELECT) then --VER
                     if daddress(15 downto 0) = MY_WORD_ADDRESS  then 	-- core reading DIG_FILT_CTRL
                         ddata_r(0)<= data_ena;
                     elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 4 then -- core reading DIG_FILT_IN
@@ -78,7 +100,7 @@ begin
     -- Process give input value -- processo leitura barramento Barramento
     process(clk, rst)
     begin
-        if rst = '1' then
+        if rst = '1' then     --! Significa q eu não vou fazer nada;
             data_ena <= '0';
             data_reset <= '0';
         else
@@ -106,10 +128,15 @@ begin
             data_out             <= (others=>'0');
             
         elsif(rising_edge(clk)) then
-
+              --- Fazer uma variavel contadora
             if(data_ena='1') then
-               registers   <= signed(data_in)& registers(0 to registers'length-2);                
-               r_acc              <= r_acc + signed(data_in) - signed(registers(registers'length-1));
+                registers   <= signed(data_in) & registers(0 to registers'length-2); -- Um dado p/ cada reg
+                
+                
+                
+                --r_acc       <= r_acc + signed(data_in) - signed(registers(registers'length-1));
+               --registers   <= signed(data_in)& registers(0 to registers'length-2);                
+               --r_acc              <= r_acc + signed(data_in) - signed(registers(registers'length-1));
             
             end if;
             data_out  <= std_logic_vector(r_acc(G_NBIT+G_AVG_LEN_LOG-1 downto G_AVG_LEN_LOG));  -- divide by 2^G_AVG_LEN_LOG

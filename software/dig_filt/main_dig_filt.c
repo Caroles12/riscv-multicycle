@@ -8,7 +8,7 @@
 int main(){
 	uint32_t data = 0;
 
-	dig_filt_enable(1);						// habilitada filtro
+	fir_filt_enable(1);						// habilitada filtro
 
 	while (1){
 
@@ -23,7 +23,7 @@ int main(){
 		
 		data++;
 		      
-		delay_(100000);						// for human interaction
+		//delay_(100000);						// for human interaction
 		
 	
 	}

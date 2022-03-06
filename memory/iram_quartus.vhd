@@ -56,6 +56,7 @@ END iram_quartus;
 ARCHITECTURE SYN OF iram_quartus IS
 
 	SIGNAL sub_wire0	: STD_LOGIC_VECTOR (31 DOWNTO 0);
+	
 
 BEGIN
 	q    <= sub_wire0(31 DOWNTO 0);
@@ -65,7 +66,8 @@ BEGIN
 		byte_size => 8,
 		clock_enable_input_a => "BYPASS",
 		clock_enable_output_a => "BYPASS",
-		init_file => "./software/quartus_blink.hex",
+		init_file => "../../software/dig_filt/quartus_main_fir_filt.hex",
+		--init_file => "./software/quartus_blink.hex",
 		intended_device_family => "MAX 10",
 		lpm_hint => "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=1",
 		lpm_type => "altsyncram",
