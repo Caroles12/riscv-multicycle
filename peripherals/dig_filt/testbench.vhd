@@ -54,8 +54,8 @@ architecture RTL of coretestbench is
     signal ddata_w     : std_logic_vector(31 downto 0);
     signal dmask       : std_logic_vector(3 downto 0);
     signal dcsel       : std_logic_vector(1 downto 0);
-    --signal d_we        : std_logic := '0';
-    signal d_we        : std_logic := '1';
+    signal d_we        : std_logic := '0';
+    --signal d_we        : std_logic := '1';
     signal ddata_r_mem : std_logic_vector(31 downto 0);
     signal d_rd        : std_logic;
     signal d_sig       : std_logic;
