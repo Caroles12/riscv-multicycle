@@ -35,6 +35,6 @@ void fir_filter_coefficient3(uint32_t coefficient){
   
 }
 
-uint32_t fir_filt_get_output(){
+/*uint32_t fir_filt_get_output(){
   return (FIR_FILT_OUT);
-}
+}*/

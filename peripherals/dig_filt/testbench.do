@@ -186,15 +186,18 @@ add wave -label r_acc -radix unsigned /dig_fil/r_acc
 
 
 add wave -height 15 -divider "FIR FILTER"
-add wave -label data_in  -radix unsigned  /fir_filt/data_in
-add wave -label data_out -radix unsigned  /fir_filt/data_out
+add wave -label data_in  -radix signed  /fir_filt/data_in
+add wave -label data_out -radix signed  /fir_filt/data_out
 add wave -label data_ena -radix binary /fir_filt/data_ena
 add wave -label data_reset -radix binary /fir_filt/data_reset 
 add wave -label ddata_r  -radix unsigned /fir_filt/ddata_r
+add wave -label ddata_w  -radix unsigned /fir_filt/ddata_w
 add wave -label d_rd     -radix binary /fir_filt/d_rd
 add wave -label d_we     -radix binary /fir_filt/d_we
-add wave -label registers -radix unsigned /fir_filt/reg
+add wave -label registers -radix signed /fir_filt/reg
 add wave -label coef -radix unsigned /fir_filt/coef
+add wave -label data_in_enable -radix binary /fir_filt/data_in_enable
+add wave -label clock2 -radix binary /fir_filt/clk
 
 run 2000 us
 wave zoomfull

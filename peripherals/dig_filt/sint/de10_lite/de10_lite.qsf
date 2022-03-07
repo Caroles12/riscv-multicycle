@@ -216,6 +216,7 @@ set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 
 set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+set_global_assignment -name VHDL_FILE ../../fir_filt.vhd
 set_global_assignment -name VHDL_FILE ../../dig_filt.vhd
 set_global_assignment -name QSYS_FILE in_system_probe.qsys
 set_global_assignment -name VHDL_FILE ../../../gpio/led_displays.vhd

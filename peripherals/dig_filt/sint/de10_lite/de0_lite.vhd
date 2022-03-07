@@ -120,6 +120,11 @@ architecture rtl of de0_lite is
     signal ddata_r_i2c : std_logic_vector(31 downto 0);
 	signal ddata_r_dig_fil : std_logic_vector(31 downto 0);
 	signal data_in_dig_fil : std_logic_vector(31 downto 0);
+	
+	signal data_in_fir_fil : std_logic_vector(31 downto 0);
+	signal ddata_r_fir_fil: std_logic_vector(31 downto 0);
+	
+	
     
     -- Interrupt Signals
     signal interrupts : std_logic_vector(31 downto 0);
@@ -269,7 +274,8 @@ begin
             ddata_r_i2c      => ddata_r_i2c,
             ddata_r_timer    => ddata_r_timer,
             ddata_r_periph   => ddata_r_periph,
-		    ddata_r_dif_fil  => ddata_r_dig_fil
+		    ddata_r_dif_fil  => ddata_r_dig_fil,
+		    ddata_r_fir_fil => ddata_r_fir_fil
 				
         );
 
@@ -331,7 +337,6 @@ begin
         
         
      dig_fil: entity work.dig_filt
-  
          port map(
              clk      => clk,
              rst      => rst,
@@ -344,25 +349,33 @@ begin
              dmask    => dmask,
              data_in  => data_in_dig_fil
          );
+         
+        fir_filt: entity work.fir_filt
+            port map(
+                clk      => clk,
+                rst      => rst,
+                daddress => daddress,
+                ddata_w  => ddata_w,
+                ddata_r  => ddata_r_fir_fil,
+                d_we     => d_we,
+                d_rd     => d_rd,
+                dcsel    => dcsel,
+                dmask    => dmask,
+                data_in  => data_in_fir_fil
+            );
         
 	-- Connect input hardware to gpio data
 	gpio_input(3 downto 0) <= SW(3 downto 0);
     LEDR(7 downto 0) <= gpio_output(7 downto 0);
     probe(7 downto 0) <= gpio_output(7 downto 0);
-    probe(39 downto 8) <= ddata_r_dig_fil(31 downto 0);    --saida do barramento dig_fil 
+    --probe(39 downto 8) <= ddata_r_dig_fil(31 downto 0);    --saida do barramento dig_fil 
+    probe(31 downto 0) <= ddata_r_dig_fil(31 downto 0);
     
-    
-    FIR_filter: entity work.fir_filt
-        generic map(
-            N_coefficients   => 4,
-            N_bits_registers => 4
-        )
-        port map(
-            clk     => clk,
-            rst     => rst,
-            datain  => datain,
-            dataout => dataout
-        );
+    data_in_fir_fil <= std_logic_vector(source(64 downto 33)); 
+    probe(64 downto 33) <= ddata_r_fir_fil(31 downto 0);
+   
+       
+       
     
     
 

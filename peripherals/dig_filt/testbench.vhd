@@ -84,8 +84,10 @@ architecture RTL of coretestbench is
     signal data_in_dig_fil  : std_logic_vector(31 downto 0);
     signal ddata_r_stepmot  : std_logic_vector(31 downto 0);
 
-    signal data_in_fir_fil  : std_logic_vector(31 downto 0);
+    signal data_in_fir_fil : std_logic_vector(31 downto 0);
     signal ddata_r_fir_fil : std_logic_vector(31 downto 0);
+    signal data_in_enable  : std_logic;
+    signal data_out : signed(63 downto 0);
 
 begin
 
@@ -137,14 +139,20 @@ begin
 
     input_data_fir_filter : process is
     begin
-        data_in_fir_fil <= x"00000000"; --std_logic_vector(signed(data) + 2); --
-        wait for 140000 ns;
-        data_in_fir_fil <= x"00000003"; --std_logic_vector(signed(data) + 2); --
-        wait until clk = '0';
-        data_in_fir_fil <= x"00000002"; --std_logic_vector(signed(data) + 2); --
-        wait until clk = '0';
-        data_in_fir_fil <= x"00000001"; --std_logic_vector(signed(data) + 2); --
-        wait;
+        --data_in_enable = '1' then
+            wait until clk = '0';
+            data_in_fir_fil <= x"00000000"; --std_logic_vector(signed(data) + 2); --
+            --wait until clk = '0';
+            --wait for 140000 ns;
+            wait until clk = '0';
+            data_in_fir_fil <= x"00000005"; --std_logic_vector(signed(data) + 2); --
+            wait until clk = '0';
+            --wait for 140000 ns;
+            data_in_fir_fil <= std_logic_vector(to_signed(-6, data_in_fir_fil'length)); --std_logic_vector(signed(data) + 2); --
+            wait until clk = '0';
+            --wait for 140000 ns;
+            data_in_fir_fil <= std_logic_vector(to_signed(-1, data_in_fir_fil'length)); --std_logic_vector(signed(data) + 2); --
+            --wait;
     end process input_data_fir_filter;
 
     -- Connect gpio data to output hardware
@@ -237,7 +245,7 @@ begin
             ddata_r_timer    => ddata_r_timer,
             ddata_r_dif_fil  => ddata_r_dig_fil,
             ddata_r_periph   => ddata_r_periph,
-            ddata_r_fir_fil => ddata_r_fir_fil
+            ddata_r_fir_fil  => ddata_r_fir_fil
         );
 
     -- Softcore instatiation
@@ -326,7 +334,6 @@ begin
         );
 
     dig_fil : entity work.dig_filt
-
         port map(
             clk      => clk,
             rst      => rst,
@@ -341,18 +348,19 @@ begin
         );
 
     fir_filt : entity work.fir_filt
-
         port map(
-            clk      => clk,
-            rst      => rst,
-            daddress => daddress,
-            ddata_w  => ddata_w,
-            ddata_r  => ddata_r_fir_fil,
-            d_we     => d_we,
-            d_rd     => d_rd,
-            dcsel    => dcsel,
-            dmask    => dmask,
-            data_in  => data_in_fir_fil
+            clk            => clk,
+            rst            => rst,
+            daddress       => daddress,
+            ddata_w        => ddata_w,
+            ddata_r        => ddata_r_fir_fil,
+            d_we           => d_we,
+            d_rd           => d_rd,
+            dcsel          => dcsel,
+            dmask          => dmask,
+            data_in        => data_in_fir_fil,
+            data_in_enable => data_in_enable,
+            data_out => data_out
         );
 
     -- FileOutput DEBUG	
