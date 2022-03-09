@@ -27,10 +27,12 @@ entity fir_filt is
         -- ToDo: Module should mask bytes (Word, half word and byte access)
         dmask          : in  std_logic_vector(3 downto 0); --! Byte enable mask
 
+       data_in_enable : out std_logic;
        -- data_in_enable : out std_logic;
         data_out       : out signed(2 * N_bits_registers - 1 downto 0);
         -- hardware input/output signals    
         data_in        : in  std_logic_vector(N_bits_registers - 1 downto 0)
+        
     );
 end entity fir_filt;
 
@@ -58,9 +60,10 @@ architecture RTL of fir_filt is
 
     signal load_coef : std_logic_vector(3 downto 0);
     -- signal data_out : signed(N_bits_registers - 1 downto 0);
+    
 
 begin
-   -- data_in_enable <= data_ena(0);
+    data_in_enable <= data_ena(0);
     data_ena(0)    <= load_coef(0) and load_coef(1) and load_coef(2) and load_coef(3);
     data_out       <= data_out_c;
     -- Process give input value -- processo leitura barramento Barramento
@@ -118,10 +121,10 @@ begin
             end loop;
         elsif rising_edge(clk) then
             --equaçao:
-            -- y[0] = coef(0)*datain(0) = 0
-            -- y[1] = coef(0)*datain(1) + coef(1)*datain(0) = 4*5 + 3*0 = 20
-            -- y[2] = coef(0)*datain(2) + coef(1)*datain(1) + coef(0)*datain(0) = 4*-6 + 3*5 + 4*0= -9
-            -- y[3] = coef(0)*datain(3) + coef(1)*datain(2) + coef(2)*datain(1) + coef(3)*datain(0) = -12
+            -- y[0] = coef(0)*datain(0) = 0  = 5 
+            -- y[1] = coef(0)*datain(1) + coef(1)*datain(0) = 4*5 + 3*0 = 20 5 + 6 = 11
+            -- y[2] = coef(0)*datain(2) + coef(1)*datain(1) + coef(0)*datain(0) = 4*-6 + 3*5 + 4*0= -9 = 5 + 6 + + 5 = 16
+            -- y[3] = coef(0)*datain(3) + coef(1)*datain(2) + coef(2)*datain(1) + coef(3)*datain(0) = -12 = 5 + 6 + 8 +9 = 28
             if data_ena(0) = '1' then
                 -- sum := coef(0) * signed(data_in);    -- Primeiro coeficiente -> primeiro parï¿½metro do somador.
                 sum := signed(coef(0)) * signed(data_in);
@@ -147,12 +150,12 @@ begin
         else
             if rising_edge(clk) then
                 if (d_rd = '1') and (dcsel = MY_CHIPSELECT) then --VER
-                    if daddress(15 downto 0) = MY_WORD_ADDRESS then -- core reading DIG_FILT_CTRL
-                        --ddata_r <= data_ena;
-                    elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 4 then -- core reading DIG_FILT_IN
+                    if daddress(15 downto 0) = MY_WORD_ADDRESS + 4 then -- core reading DIG_FILT_CTRL
+                        --ddata_r <= std_logic_vector(data_out_c(31 downto 0));
+                        ddata_r <= std_logic_vector(data_out_c(63 downto 32));
+                    elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 5 then -- core reading DIG_FILT_IN
+                        --ddata_r <= std_logic_vector(data_out_c(63 downto 32));
                         ddata_r <= std_logic_vector(data_out_c(31 downto 0));
-                    elsif daddress(15 downto 0) = MY_WORD_ADDRESS + 5 then -- core reading DIG_FILT_OUT
-                        ddata_r <= std_logic_vector(data_out_c(63 downto 32));  --fazer em funçao do tamanho da palavra
                     end if;
                 end if;
             end if;

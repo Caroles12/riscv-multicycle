@@ -154,6 +154,8 @@ architecture rtl of de0_lite is
     
     signal datain: signed(3 downto 0);
     signal dataout: signed(3 downto 0);
+    signal data_in_enable : std_logic;
+    signal data_out : signed(63 downto 0);
 	 
 	 
 	 
@@ -181,7 +183,7 @@ begin
 			areset	=> '0',
 			inclk0 	=> MAX10_CLK1_50,
 			c0		 	=> clk,
-			c1	 		=> clk_50MHz,
+			--c1	 		=> clk_50MHz,
 			locked	=> locked_sig
 		);
 
@@ -352,27 +354,32 @@ begin
          
         fir_filt: entity work.fir_filt
             port map(
-                clk      => clk,
-                rst      => rst,
-                daddress => daddress,
-                ddata_w  => ddata_w,
-                ddata_r  => ddata_r_fir_fil,
-                d_we     => d_we,
-                d_rd     => d_rd,
-                dcsel    => dcsel,
-                dmask    => dmask,
-                data_in  => data_in_fir_fil
+                clk            => clk,
+                rst            => rst,
+                daddress       => daddress,
+                ddata_w        => ddata_w,
+                ddata_r        => ddata_r_fir_fil,
+                d_we           => d_we,
+                d_rd           => d_rd,
+                dcsel          => dcsel,
+                dmask          => dmask,
+                data_in_enable => data_in_enable,
+                data_out       => data_out,
+                data_in        => data_in_fir_fil
             );
+               
         
 	-- Connect input hardware to gpio data
-	gpio_input(3 downto 0) <= SW(3 downto 0);
+	--gpio_input(3 downto 0) <= SW(3 downto 0);
     LEDR(7 downto 0) <= gpio_output(7 downto 0);
-    probe(7 downto 0) <= gpio_output(7 downto 0);
+   -- probe(7 downto 0) <= gpio_output(7 downto 0);
     --probe(39 downto 8) <= ddata_r_dig_fil(31 downto 0);    --saida do barramento dig_fil 
-    probe(31 downto 0) <= ddata_r_dig_fil(31 downto 0);
+   -- probe(31 downto 0) <= ddata_r_dig_fil(31 downto 0);
+	
+	 LEDR(8) <= data_in_enable;
     
-    data_in_fir_fil <= std_logic_vector(source(64 downto 33)); 
-    probe(64 downto 33) <= ddata_r_fir_fil(31 downto 0);
+    data_in_fir_fil <= std_logic_vector(source(63 downto 32)); 
+    probe(63 downto 0) <= std_logic_vector(data_out(63 downto 0));
    
        
        
